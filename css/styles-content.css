@@ -1,0 +1,21 @@
+.img-home-general {
+  background-size: cover; /* Ảnh sẽ bao phủ toàn bộ kích thước thẻ */
+  background-position: center; /* Căn giữa ảnh trong thẻ */
+  background-repeat: no-repeat; /* Không lặp lại ảnh nền */
+}
+
+.img-home-01 {
+	background-image: url('../img/img-home-01.png');
+}
+
+.img-home-02 {
+	background-image: url('../img/img-home-02.png');
+}
+
+.img-home-03 {
+	background-image: url('../img/img-home-03.png');
+}
+
+.img-home-04 {
+	background-image: url('../img/img-home-04.png');
+}

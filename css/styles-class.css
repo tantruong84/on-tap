@@ -1,47 +1,6 @@
-/* Header */
-.header {
-            background: linear-gradient(to right, #97F8BE, #E5E848);
-            text-align: center;
-            padding: 20px;
-				border-width: thin;
-				border-style: solid;
-            border-radius: 10px;
-            margin-top: 20px;
+.gradient-bg {
+            background: linear-gradient(90deg, #97F8BE, #E5E848);
             color: #993300;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        /* Navigation */
-        .nav {
-            display: flex;
-				justify-content: center;
-            background: linear-gradient(to right, #b2ff59, #76ff03);
-            padding: 5px;
-				border-width: thin;
-				border-style: solid;
-            border-radius: 5px;
-            margin-top: 10px;
-				background: linear-gradient(to right, #97F8BE, #E5E848);
-        }
-
-        .nav a {
-				text-decoration: none;
-            color: black;
-				font-family: Times, serif;
-				font-size: 10px;
-            font-weight: bold;
-				background-color: #9CE8DA;
-            border-radius: 5px;
-				border-style: solid;
-				border-width: thin;
-				margin: 2px 4px;
-				padding: 1px 12px;
-
-        }
-
-        .nav a:hover {
-            background-color: #ccff90;
         }
 
         /* Content Layout */
@@ -81,17 +40,41 @@
         }
 			.box-content-home {
             width: 100%;
-            height: 90px;
             background: linear-gradient(to right, #12ACE6, #60E8A3);
             margin-bottom: 20px;
             border-radius: 10px;
             box-sizing: border-box;
         }
 
+.container-bookmark-content-guide {
+				display: flex;
+
+}
+
+.box-bookmark-guide {
+            width: 50%;
+            height: 370px;
+            background: white;
+				margin-right: 10px;
+            margin-bottom: 10px;
+            border-style: solid;
+				border-width: thin;
+				border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+.box-content-guide {
+            width: 100%;
+            height: 370px;
+            background: linear-gradient(to right, #12ACE6, #60E8A3);
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
         /* Footer */
-        .footer {
+.footer {
             display: block;
-            max-width: 1000px;
             background: linear-gradient(to right, #97F8BE, #E5E848);
             text-align: justify;
             padding: 10px;

@@ -1,0 +1,46 @@
+.navbar-custom {
+            background: linear-gradient(90deg, #97F8BE, #E5E848); /* Màu nền gradient */
+            border: 1px solid #666; /* Đường viền ngoài */
+            border-radius: 10px; /* Bo tròn góc cho navbar */
+            padding: 10px;
+            overflow-x: auto; /* Cho phép cuộn ngang khi cần */
+            white-space: nowrap; /* Giữ các mục trên cùng một dòng */
+        }
+
+.nav-item-custom {
+            border: 1px solid #666; /* Đường viền bao quanh từng mục */
+            border-radius: 5px; /* Bo tròn góc cho từng mục */
+            background-color: #B2FFE6; /* Màu nền của từng mục */
+            margin: 0 5px; /* Khoảng cách giữa các mục */
+            padding: 3px 15px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            text-decoration: none; /* Bỏ dấu gạch dưới */
+            display: inline-block; /* Hiển thị các mục trên cùng một dòng */
+        }
+
+.nav-item-custom:hover {
+            background-color: #A0E5C8; /* Màu khi hover */
+            color: #000;
+        }
+
+        /* Định dạng khi màn hình nhỏ */
+        @media (max-width: 768px) {
+            .navbar-custom {
+                justify-content: flex-start; /* Canh trái các mục khi màn hình nhỏ */
+            }
+            .nav-item-custom {
+                font-size: 12px; /* Kích thước chữ nhỏ hơn khi màn hình nhỏ */
+            }
+        }
+
+        /* Định dạng khi màn hình lớn */
+        @media (min-width: 769px) {
+            .navbar-custom {
+                justify-content: center; /* Căn giữa các mục khi màn hình lớn */
+            }
+            .nav-item-custom {
+                font-size: 18px; /* Kích thước chữ lớn hơn khi màn hình lớn */
+            }
+        }

@@ -1,0 +1,5 @@
+@media (max-width: 576px) {
+    .fs-xs-p {
+        font-size: 12px !important; /* Điều chỉnh kích thước font nhỏ hơn nữa cho màn hình rất nhỏ */
+    }
+}

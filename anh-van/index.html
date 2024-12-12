@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Question App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        #app {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        #question {
+            font-size: 18px;
+            margin: 20px;
+        }
+        #answer {
+            font-size: 16px;
+            color: #333;
+            margin: 20px;
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #file-input {
+            margin-bottom: 20px;
+        }
+        #mode-selector {
+            margin-bottom: 20px;
+        }
+        #counter {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <input type="file" id="file-input" accept=".txt" multiple>
+    <select id="mode-selector">
+        <option value="random">Random</option>
+        <option value="sequential">Sequential</option>
+    </select>
+    <div id="question">Upload files to start</div>
+    <div id="answer"></div>
+    <button id="next-btn" onclick="getNextQuestion()" disabled>Start</button>
+    <div id="counter">0/0 questions answered</div>
+</div>
+
+<script>
+    let questionsAndAnswers = [];
+    let answeredQuestions = [];
+    let questionIndex = 0; // For sequential mode
+
+    // Đọc dữ liệu từ các file do người dùng tải lên
+    document.getElementById('file-input').addEventListener('change', function(event) {
+        const files = event.target.files;
+        questionsAndAnswers = []; // Xóa dữ liệu trước đó nếu có
+        answeredQuestions = [];
+        questionIndex = 0;
+
+        let filesProcessed = 0; // Đếm số lượng file đã xử lý
+
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                // Tách nội dung file thành các dòng và lọc bỏ các dòng không chứa '@'
+                const lines = content.split('\n').filter(line => line.includes('@'));
+                questionsAndAnswers.push(...lines); // Thêm các câu hỏi vào mảng chung
+
+                filesProcessed++;
+                if (filesProcessed === files.length) {
+                    // Chỉ cập nhật giao diện sau khi đã xử lý xong tất cả các file
+                    updateCounter();
+                    document.getElementById('next-btn').disabled = false;
+                    document.getElementById('question').textContent = 'Click the button to get a question';
+                }
+            };
+            reader.readAsText(file);
+        });
+    });
+
+    // Cập nhật bộ đếm câu hỏi
+    function updateCounter() {
+        document.getElementById('counter').textContent = `${answeredQuestions.length}/${questionsAndAnswers.length} questions answered`;
+    }
+
+    // Hàm lấy câu hỏi tiếp theo dựa trên chế độ được chọn
+    function getNextQuestion() {
+        if (answeredQuestions.length === questionsAndAnswers.length) {
+            document.getElementById('question').textContent = 'All questions answered!';
+            document.getElementById('next-btn').disabled = true;
+            return;
+        }
+
+        let question, answer;
+        const mode = document.getElementById('mode-selector').value;
+
+        if (mode === 'random') {
+            // Lấy ngẫu nhiên câu hỏi chưa được trả lời
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * questionsAndAnswers.length);
+            } while (answeredQuestions.includes(randomIndex));
+            [question, answer] = questionsAndAnswers[randomIndex].split('@');
+            answeredQuestions.push(randomIndex);
+        } else if (mode === 'sequential') {
+            // Lấy câu hỏi tiếp theo trong danh sách
+            while (answeredQuestions.includes(questionIndex)) {
+                questionIndex = (questionIndex + 1) % questionsAndAnswers.length;
+            }
+            [question, answer] = questionsAndAnswers[questionIndex].split('@');
+            answeredQuestions.push(questionIndex);
+        }
+
+        // Hiển thị câu hỏi và cập nhật trạng thái
+        document.getElementById('question').textContent = question;
+        const answerElement = document.getElementById('answer');
+        answerElement.textContent = answer;
+        answerElement.style.display = 'none';
+        updateCounter();
+
+        // Thay đổi nút để hiển thị câu trả lời khi nhấp
+        const button = document.getElementById('next-btn');
+        button.textContent = 'Show Answer';
+        button.onclick = () => {
+            answerElement.style.display = 'block';
+            button.textContent = 'Next Question';
+            button.onclick = getNextQuestion;
+        };
+    }
+</script>
+
+</body>
+</html>

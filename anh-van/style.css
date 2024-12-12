@@ -1,0 +1,86 @@
+/* Reset cơ bản */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Tiêu đề */
+h1 {
+  text-align: center;
+  color: #007bff;
+  margin-top: 20px;
+}
+
+/* Container chính */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Input file */
+#fileInput {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Khu vực hiển thị câu hỏi và câu trả lời */
+#questionArea, #answerArea {
+  width: 80%;
+  max-width: 600px;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  text-align: center;
+  min-height: 50px;
+}
+
+/* Nút bấm */
+button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #007bff;
+}
+
+/* Hiệu ứng khi nút bị disabled */
+button:disabled {
+  background-color: #007bff;
+  cursor: not-allowed;
+}
+
+/* Kích thước nhỏ */
+@media (max-width: 600px) {
+  #questionArea, #answerArea {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}

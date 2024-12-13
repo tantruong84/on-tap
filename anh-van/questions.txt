@@ -9,7 +9,10 @@ Bạn nghỉ ngơi một chút đi.|Take a short rest.
 Trông bạn có vẻ mệt. Ngủ một chút đi rồi bạn sẽ thấy khỏe hơn.|You look tired. Take a nap and you’ll feel better.
 Ngủ xíu đi!|Take a nap!
 Nó đã in sâu vào tâm trí tôi.|It has imprinted in my mind.
-Dẫu thế nào đi chăng nữa, tôi vẫn yêu bạn.|No matter what, I still love this flower.
+Dẫu thế nào đi chăng nữa, tôi vẫn yêu bạn.|No matter what, I still love you.
 Bạn đang an ủi tôi à?|Are you comforting me?
 Có vẻ nó là một thói quen.|It seems to be a habit!
 Đừng lo lắng về điều đó!|Don't worry about that!
+Please turn your back.|Vui lòng quay lưng lại.
+Please raise your hands if you agree.|Hãy giơ tay nếu các bạn đồng ý.
+Oh. Tôi gõ nhầm!|Oh. I typed it wrong!

@@ -23,14 +23,21 @@ fetch('questions.txt')
 
 // Hiển thị câu hỏi hiện tại
 function showQuestion() {
-  if (currentIndex < questions.length) {
+  if (currentIndex >= 0 && currentIndex < questions.length) {
     document.getElementById('questionArea').textContent =
       questions[currentIndex].question;
     document.getElementById('answerArea').textContent = '';
-  } else {
-    document.getElementById('questionArea').textContent = 'End!';
+  } else if (currentIndex >= questions.length) {
+    document.getElementById('questionArea').textContent = 'Hết câu hỏi!';
+    document.getElementById('answerArea').textContent = '';
+  } else if (currentIndex < 0) {
+    document.getElementById('questionArea').textContent = 'Không có câu hỏi trước!';
     document.getElementById('answerArea').textContent = '';
   }
+
+  // Kích hoạt hoặc vô hiệu hóa các nút dựa trên trạng thái
+  document.getElementById('previousQuestionBtn').disabled = currentIndex <= 0;
+  document.getElementById('nextQuestionBtn').disabled = currentIndex >= questions.length - 1;
 }
 
 // Nút "Xem câu trả lời"
@@ -44,5 +51,11 @@ document.getElementById('showAnswerBtn').addEventListener('click', () => {
 // Nút "Câu hỏi tiếp theo"
 document.getElementById('nextQuestionBtn').addEventListener('click', () => {
   currentIndex++;
+  showQuestion();
+});
+
+// Nút "Câu hỏi trước"
+document.getElementById('previousQuestionBtn').addEventListener('click', () => {
+  currentIndex--;
   showQuestion();
 });

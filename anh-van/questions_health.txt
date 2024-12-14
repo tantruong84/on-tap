@@ -1,0 +1,15 @@
+Hôm nay bạn cảm thấy thế nào? | How are you feeling today?
+Bạn có thấy khá hơn chút nào không? | Do you feel any better?
+Bạn có triệu chứng gì? | What symptoms do you have?
+Bạn có đau không? | Are you in pain?
+Bạn đã uống thuốc chưa? | Have you been taking your medicine?
+Bạn đau ở đâu? | Where does it hurt?
+Bạn cảm thấy như thế này bao lâu rồi? | How long have you been feeling this way?
+Bạn có bị sốt không? | Do you have a fever?
+Để tôi đo nhiệt độ của bạn. | Let me take your temperature.
+Bạn đã từng gặp vấn đề này trước đây chưa? | Have you had this problem before?
+Bạn nên nghỉ ngơi một chút. | You should get some rest.
+Hãy uống nhiều nước và giữ cơ thể đủ nước. | Drink plenty of water and stay hydrated.
+Uống thuốc này hai lần mỗi ngày. | Take this medicine twice a day.
+Đừng quên tái khám với bác sĩ. | Don’t forget to follow up with your doctor.
+Cố gắng ăn uống lành mạnh và tập thể dục đều đặn. | Try to eat healthy and exercise regularly.

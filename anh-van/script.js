@@ -37,7 +37,7 @@ function showQuestion() {
   if (currentIndex >= 0 && currentIndex < questions.length) {
     document.getElementById('questionArea').textContent =
       questions[currentIndex].question;
-    document.getElementById('answerArea').textContent = '';
+    document.getElementById('answerArea').textContent = '???';
   } else if (currentIndex >= questions.length) {
     document.getElementById('questionArea').textContent = 'Hết câu hỏi!';
     document.getElementById('answerArea').textContent = '';
@@ -84,8 +84,21 @@ document.getElementById('topicSelector').addEventListener('change', (event) => {
   const selectedTopic = event.target.value;
 
   if (selectedTopic) {
+    // Xóa option "Chọn một chủ đề" khi chọn chủ đề
+    const topicSelector = document.getElementById('topicSelector');
+    const defaultOption = topicSelector.querySelector('option[value=""]');
+    if (defaultOption) {
+      defaultOption.remove(); // Xóa option mặc định
+    }
+
     // Load câu hỏi từ file được chọn
     loadQuestions(selectedTopic);
+  } else {
+    // Nếu không có gì được chọn, không làm gì
+    document.getElementById('questionArea').textContent =
+      'Vui lòng chọn một chủ đề để bắt đầu.';
+    document.getElementById('answerArea').textContent = '';
+    toggleButtons(false);
   }
 });
 

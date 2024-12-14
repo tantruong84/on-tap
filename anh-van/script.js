@@ -37,7 +37,7 @@ function showQuestion() {
   if (currentIndex >= 0 && currentIndex < questions.length) {
     document.getElementById('questionArea').textContent =
       questions[currentIndex].question;
-    document.getElementById('answerArea').textContent = '???';
+    document.getElementById('answerArea').textContent = '';
   } else if (currentIndex >= questions.length) {
     document.getElementById('questionArea').textContent = 'Hết câu hỏi!';
     document.getElementById('answerArea').textContent = '';

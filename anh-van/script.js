@@ -16,6 +16,7 @@ function loadQuestions(fileName) {
         });
 
       currentIndex = 0; // Đặt lại index
+      updateCounter();
       showQuestion(); // Hiển thị câu hỏi đầu tiên
     })
     .catch((error) => {
@@ -23,6 +24,14 @@ function loadQuestions(fileName) {
       document.getElementById('questionArea').textContent = 'Không thể tải câu hỏi!';
       toggleButtons(false);
     });
+}
+
+// Cập nhật bộ đếm câu hỏi
+function updateCounter() {
+  document.getElementById('currentQuestion').textContent = questions.length
+    ? currentIndex + 1
+    : 0;
+  document.getElementById('totalQuestions').textContent = questions.length;
 }
 
 // Hiển thị câu hỏi hiện tại
@@ -38,6 +47,7 @@ function showQuestion() {
     document.getElementById('questionArea').textContent =
       questions[currentIndex].question;
     document.getElementById('answerArea').textContent = '';
+    updateCounter();
   } else if (currentIndex >= questions.length) {
     document.getElementById('questionArea').textContent = 'Hết câu hỏi!';
     document.getElementById('answerArea').textContent = '';
@@ -49,7 +59,8 @@ function showQuestion() {
   // Kích hoạt hoặc vô hiệu hóa các nút
   toggleButtons(true);
   document.getElementById('previousQuestionBtn').disabled = currentIndex <= 0;
-  document.getElementById('nextQuestionBtn').disabled = currentIndex >= questions.length - 1;
+  document.getElementById('nextQuestionBtn').disabled =
+    currentIndex >= questions.length - 1;
 }
 
 // Kích hoạt hoặc vô hiệu hóa các nút
@@ -79,18 +90,26 @@ document.getElementById('previousQuestionBtn').addEventListener('click', () => {
   showQuestion();
 });
 
+// Nút "Nhảy đến câu hỏi"
+document.getElementById('jumpButton').addEventListener('click', () => {
+  const jumpInput = document.getElementById('jumpInput');
+  const questionNumber = parseInt(jumpInput.value, 10);
+
+  if (isNaN(questionNumber) || questionNumber < 1 || questionNumber > questions.length) {
+    alert('Vui lòng nhập số thứ tự hợp lệ.');
+    return;
+  }
+
+  currentIndex = questionNumber - 1; // Chuyển sang chỉ mục câu hỏi tương ứng
+  showQuestion();
+  jumpInput.value = ''; // Xóa input sau khi nhảy
+});
+
 // Khi người dùng chọn chủ đề
 document.getElementById('topicSelector').addEventListener('change', (event) => {
   const selectedTopic = event.target.value;
 
   if (selectedTopic) {
-    // Xóa option "Chọn một chủ đề" khi chọn chủ đề
-    const topicSelector = document.getElementById('topicSelector');
-    const defaultOption = topicSelector.querySelector('option[value=""]');
-    if (defaultOption) {
-      defaultOption.remove(); // Xóa option mặc định
-    }
-
     // Load câu hỏi từ file được chọn
     loadQuestions(selectedTopic);
   } else {
@@ -107,4 +126,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('questionArea').textContent =
     'Vui lòng chọn một chủ đề để bắt đầu.';
   toggleButtons(false); // Vô hiệu hóa các nút cho đến khi người dùng chọn chủ đề
+  updateCounter(); // Hiển thị bộ đếm với giá trị ban đầu
 });

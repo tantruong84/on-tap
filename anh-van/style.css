@@ -84,3 +84,27 @@ button:disabled {
     font-size: 0.9rem;
   }
 }
+
+#jumpToQuestion {
+  margin: 20px 0;
+}
+
+#jumpToQuestion label {
+  display: block; /* Đặt label trên một hàng riêng */
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#jumpToQuestion div {
+  display: flex; /* Đặt input và button trên cùng một hàng */
+  gap: 10px; /* Khoảng cách giữa input và button */
+}
+
+#jumpInput {
+  width: 180px; /* Điều chỉnh độ rộng của input */
+  padding: 5px; /* Thêm khoảng cách bên trong */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 4px; /* Bo góc */
+  font-size: 16px; /* Đặt kích thước font ít nhất 16px */
+
+}

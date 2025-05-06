@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinh Dưỡng</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 700px; margin: auto; }
+    input { width: 100px; margin: 5px; }
+    label { display: inline-block; width: 130px; }
+    .group { margin-bottom: 10px; }
+    #output { margin-top: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h2>Dinh Dưỡng</h2>
+
+  <div class="group"><label for="weight">Cân nặng (kg):</label><input id="weight" type="number" step="0.01"></div>
+  <div class="group"><label for="g10">G10% (ml):</label><input id="g10" type="number" step="1"></div>
+  <div class="group"><label for="g30">G30% (ml):</label><input id="g30" type="number" step="1"></div>
+  <div class="group"><label for="amino">Vamin/Amino (ml):</label><input id="amino" type="number" step="1"></div>
+  <div class="group"><label for="nacl">NaCl (ml):</label><input id="nacl" type="number" step="1"></div>
+  <div class="group"><label for="kcl">KCl (ml):</label><input id="kcl" type="number" step="1"></div>
+  <div class="group"><label for="cacl2">CaCl2 (ml):</label><input id="cacl2" type="number" step="1"></div>
+  <div class="group"><label for="caglu">Ca gluconate (ml):</label><input id="caglu" type="number" step="1"></div>
+  <div class="group"><label for="mgso4">MgSO4 (ml):</label><input id="mgso4" type="number" step="1"></div>
+  <div class="group"><label for="phospho">Phospho (ml):</label><input id="phospho" type="number" step="1"></div>
+  <div class="group"><label for="lipid">Lipid (ml):</label><input id="lipid" type="number" step="1"></div>
+
+  <button onclick="tinhToan()">Tính</button>
+
+  <div id="output"></div>
+
+  <script>
+    function tinhToan() {
+      const CN = parseFloat(document.getElementById("weight").value) || 0;
+      const G10 = parseFloat(document.getElementById("g10").value) || 0;
+      const G30 = parseFloat(document.getElementById("g30").value) || 0;
+      const amino = parseFloat(document.getElementById("amino").value) || 0;
+      const nacl = parseFloat(document.getElementById("nacl").value) || 0;
+      const kcl = parseFloat(document.getElementById("kcl").value) || 0;
+      const cacl2 = parseFloat(document.getElementById("cacl2").value) || 0;
+      const cagluconate = parseFloat(document.getElementById("caglu").value) || 0;
+      const mgso4 = parseFloat(document.getElementById("mgso4").value) || 0;
+      const phospho = parseFloat(document.getElementById("phospho").value) || 0;
+      const lipid = parseFloat(document.getElementById("lipid").value) || 0;
+
+      const V = G10 + G30 + amino + nacl + kcl + cacl2 + mgso4 + lipid;
+      const V_kg_day = CN > 0 ? V / CN : 0;
+      const E = CN > 0 ? ((G30 * 0.3 + G10 * 0.1)*3.4 + (amino * 0.065 * 4)+ (lipid * 0.2 *9))/CN : 0;
+
+      const GIR = CN > 0 ? ((G10 * 0.1 + G30 * 0.3) * 1000) / (CN * 24 * 60) : 0;
+      const G_percent = V > 0 ? (G30 * 0.3 + G10 * 0.1) / V * 100 : 0;
+
+      const Pr = CN > 0 ? (amino * 0.065) / CN : 0;
+      const L = CN > 0 ? (lipid * 0.2) / CN : 0;
+      const Na = CN > 0 ? (nacl * 1.7) / CN : 0;
+      const K = CN > 0 ? (kcl * 1.3) / CN : 0;
+      const CaCl2_10 = CN > 0 ? (cacl2 * 1.36) / CN : 0;
+      const Ca_glu_10 = CN > 0 ? (cagluconate * 4.5) / CN : 0;
+      const MgSO4_15 = CN > 0 ? (mgso4 * 2.5) / CN : 0;
+      const Phospho = CN > 0 ? (phospho * 0.66) / CN : 0;
+
+      document.getElementById("output").innerHTML = `
+        <table>
+          <tr><th>Thông số</th><th>Giá trị</th></tr>
+          <tr><td>V (ml/ngày)</td><td>${V.toFixed(2)}</td></tr>
+          <tr><td>V (ml/kg/ngày)</td><td>${V_kg_day.toFixed(2)}</td></tr>
+          <tr><td>E (kcal/kg/ngày)</td><td>${E.toFixed(2)}</td></tr>
+          <tr><td>GIR (mg/kg/phút)</td><td>${GIR.toFixed(2)}</td></tr>
+          <tr><td>G (%)</td><td>${G_percent.toFixed(2)}</td></tr>
+          <tr><td>Pr (g/kg/ngày)</td><td>${Pr.toFixed(2)}</td></tr>
+          <tr><td>L (g/kg/ngày)</td><td>${L.toFixed(2)}</td></tr>
+          <tr><td>Na (mEq/kg/ngày)</td><td>${Na.toFixed(2)}</td></tr>
+          <tr><td>K (mEq/kg/ngày)</td><td>${K.toFixed(2)}</td></tr>
+          <tr><td>CaCl2 10%</td><td>${CaCl2_10.toFixed(2)}</td></tr>
+          <tr><td>Ca gluconate 10%</td><td>${Ca_glu_10.toFixed(2)}</td></tr>
+          <tr><td>MgSO4 15%</td><td>${MgSO4_15.toFixed(2)}</td></tr>
+          <tr><td>Phospho</td><td>${Phospho.toFixed(2)}</td></tr>
+        </table>
+      `;
+    }
+  </script>
+</body>
+</html>

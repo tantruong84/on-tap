@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang web đọc truyện</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #555;
+        }
+
+#screenshot {
+font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+}
+button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #status {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: green;
+        }
+        .image-preview {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .image-preview img {
+            margin: 10px;
+            border: 2px solid #ddd;
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Đọc Truyện</h1>
+    </header>
+
+    <div class="container">
+        <h1>Khởi Đầu Của Cuộc Hành Trình</h1>
+        <p id="story">
+            Ngày xưa, trong một khu rừng xanh mướt, có một chú thỏ con tên là Bé Tí. Bé Tí rất hiếu động và tò mò về mọi thứ xung quanh. Một ngày nọ, Bé Tí nghe bà Thỏ kể về cây cầu phép thuật ẩn sâu trong rừng. Cây cầu này có thể dẫn đến một nơi tràn ngập kẹo và bánh ngọt.
+
+Quyết tâm tìm cây cầu, Bé Tí dậy thật sớm, xách chiếc ba lô nhỏ và bắt đầu hành trình. Trên đường đi, Bé Tí gặp bạn Sóc Lém, Còi Nhím, và Cún Bông. Cả ba cùng nhau gia nhập hành trình tìm cây cầu phép thuật.
+
+Sau khi đi qua những tán cây rậm rạp và con suối trong veo, nhóm bạn phát hiện ra một cây cầu nhỏ bằng đá phủ đầy dây leo. “Chắc đây là cây cầu phép thuật!” Bé Tí hô lớn. Nhưng khi đến gần, họ thấy một tấm biển: “Ai muốn qua cầu phải giải một câu đố.”
+
+Câu đố là: “Cái gì có chân mà không đi, có cánh mà không bay?” Bé Tí suy nghĩ hồi lâu rồi nói, “Là cái ghế!” Ngay lập tức, cây cầu tỏa sáng và mở ra một con đường dẫn tới vương quốc kẹo ngọt.
+
+Nhóm bạn bước qua cây cầu và khám phá cả một thế giới đầy kẹo, bánh ngọt, và những cây sô-cô-la khổng lồ. Họ cùng nhau vui chơi, ăn uống thỏa thích và trở về nhà với những kỷ niệm thật tuyệt vời.
+
+Từ đó, Bé Tí và các bạn luôn nhớ rằng, điều kỳ diệu sẽ đến nếu ta luôn kiên trì và cùng nhau vượt qua thử thách.
+        </p>
+
+        <button class="btn" onclick="nextChapter()">Chương tiếp theo</button>
+    </div>
+
+    <script>
+        const chapters = [
+            "Ngày xưa, trong một khu rừng xanh mướt, có một chú thỏ con tên là Bé Tí. Bé Tí rất hiếu động và tò mò về mọi thứ xung quanh. Một ngày nọ, Bé Tí nghe bà Thỏ kể về cây cầu phép thuật ẩn sâu trong rừng. Cây cầu này có thể dẫn đến một nơi tràn ngập kẹo và bánh ngọt. Nhóm bạn bước qua cây cầu và khám phá cả một thế giới đầy kẹo, bánh ngọt, và những cây sô-cô-la khổng lồ. Họ cùng nhau vui chơi, ăn uống thỏa thích và trở về nhà với những kỷ niệm thật tuyệt vời. Từ đó, Bé Tí và các bạn luôn nhớ rằng, điều kỳ diệu sẽ đến nếu ta luôn kiên trì và cùng nhau vượt qua thử thách.",
+            "Chương 2: Sau khi rời khỏi ngôi làng, Lâm bước vào một thế giới đầy phép màu, nhưng cũng đầy rẫy những nguy hiểm mà cậu chưa từng biết...",
+            "Chương 3: Trên đường hành trình, Lâm gặp gỡ nhiều người bạn mới, và cùng nhau, họ bắt đầu cuộc phiêu lưu không ngừng nghỉ..."
+        ];
+
+        let currentChapter = 0;
+
+        function nextChapter() {
+            currentChapter++;
+            if (currentChapter >= chapters.length) {
+                alert("Đây là chương cuối cùng!");
+            } else {
+                document.getElementById('story').innerText = chapters[currentChapter];
+            }
+        }
+    </script>
+
+
+<div id="screenshot">
+<h1>Điều hướng</h1>
+    <button id="getButton">First</button>
+    <button id="stopButton" disabled>Next</button>
+    <button id="showButton">Previous</button>
+    <button id="hideButton">Last</button>
+    <div id="status"></div>
+
+    <div class="image-preview" id="imagePreview" style="display: none;">
+    </div>
+</div>
+
+
+    <script>
+        const getButton = document.getElementById('getButton');
+        const stopButton = document.getElementById('stopButton');
+        const showButton = document.getElementById('showButton');
+        const hideButton = document.getElementById('hideButton');
+        const statusDiv = document.getElementById('status');
+        const imagePreviewDiv = document.getElementById('imagePreview');
+
+        let images = []; // Mảng lưu tất cả các ảnh đã chụp
+        let intervalId = null; // Lưu ID của setInterval để dừng sau này
+
+        // Bắt đầu chụp ảnh mỗi giây
+        getButton.addEventListener('click', () => {
+            statusDiv.textContent = 'Progressing...';
+            getButton.disabled = true;
+            stopButton.disabled = false;
+
+            // Truy cập camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then((stream) => {
+                    const video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.play();
+
+                    video.addEventListener('loadeddata', () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        const context = canvas.getContext('2d');
+
+                        // Bắt đầu chụp ảnh liên tục mỗi 0.5 giây
+                        intervalId = setInterval(() => {
+                            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            canvas.toBlob((blob) => {
+                                images.push(blob); // Lưu ảnh vào mảng
+                                console.log('Completed!');
+                            }, 'image/png');
+                        }, 500); // Chụp ảnh mỗi giây
+
+                    });
+
+                    stopButton.addEventListener('click', () => {
+                        clearInterval(intervalId); // Dừng chụp ảnh
+                        intervalId = null;
+                        getButton.disabled = false;
+                        stopButton.disabled = true;
+                        statusDiv.textContent = 'Stoped!';
+
+                        // Dừng tất cả các track của stream để tắt camera
+                        stream.getTracks().forEach(track => track.stop());
+                    });
+                })
+                .catch((err) => {
+                    console.error("Error: ", err);
+                    statusDiv.textContent = 'Error!';
+                });
+        });
+
+        // Hiển thị tất cả các ảnh đã chụp
+        showButton.addEventListener('click', () => {
+            if (images.length > 0) {
+                imagePreviewDiv.innerHTML = ''; // Xóa ảnh cũ
+
+                images.forEach((imageBlob, index) => {
+                    const imageUrl = URL.createObjectURL(imageBlob);
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imageUrl;
+
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = imageUrl;
+                    downloadLink.download = `image${index + 1}.png`;
+                    downloadLink.textContent = `Tải ảnh ${index + 1}`;
+                    
+                    const imageContainer = document.createElement('div');
+                    imageContainer.appendChild(imgElement);
+                    imageContainer.appendChild(document.createElement('br'));
+                    imageContainer.appendChild(downloadLink);
+
+                    imagePreviewDiv.appendChild(imageContainer);
+                });
+
+                imagePreviewDiv.style.display = 'flex'; // Hiển thị các ảnh
+                statusDiv.textContent = 'Showed!';
+            } else {
+                statusDiv.textContent = 'There is no file!';
+            }
+        });
+
+        // Ẩn tất cả các ảnh
+        hideButton.addEventListener('click', () => {
+            imagePreviewDiv.style.display = 'none'; // Ẩn các ảnh
+            statusDiv.textContent = 'Finished!';
+        });
+
+    </script>
+</body>
+</html>
